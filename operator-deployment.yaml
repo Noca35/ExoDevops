@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: malls-operator
+  labels:
+    app: malls-operator
+spec:
+  replicas: 1 # make sure to not have more than one replicas
+  strategy:
+    type: Recreate # make sure the old pod is being killed before the new pod is being created
+  selector:
+    matchLabels:
+      app: malls-operator
+  template:
+    metadata:
+      labels:
+        app: malls-operator
+    spec:
+      containers:
+      - name: malls-operator
+        image: noca/mall-operator
