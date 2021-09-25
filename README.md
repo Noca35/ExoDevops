@@ -32,7 +32,7 @@ A ce stade le dashboard kubernetes devrait apparaitre à l'écran
 
 ## Usage
 
-1.Dans notre cas l'opérateur va être déployer dans le cluster, on va devoir donc lui attribuer les droits nécéssaire à son bon fonctionnement
+1.Dans notre cas l'opérateur va être déployé dans le cluster, on va devoir donc lui attribuer les droits nécéssaire à son bon fonctionnement
 
 ```sh
 kubectl apply -f crd.yaml ## definition de la custom ressource
