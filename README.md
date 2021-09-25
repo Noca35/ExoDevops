@@ -53,9 +53,9 @@ kubectl apply -f mall.yaml
 
 4.Confirmation de la création des ressources
 
-A ce stade une configmap "mall-config" a du être créée ainsi que 10 pods shop basé sur la custom ressource :
+A ce stade une configmap "mall-config" a du être créée avec l'item "socks" ainsi que 10 pods shop basé sur la custom ressource mall.yaml :
 
-```python
+```yaml
 apiVersion: mall.my.domain/v1
 kind: Mall
 metadata:
@@ -64,6 +64,61 @@ spec:
   replicas: 10
   item: socks
 ```
+
+replicas correspondant au nombre de boutique dans la gallerie marchande et item l'objet vendu
+
+5.Affichage du message d'information
+
+Commençons par lister les pods déployés
+
+```sh
+kubectl get pods --all-namespaces
+```
+
+Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
+
+```sh
+kubectl logs -f my-pod
+```
+
+Le message retournant le nom du shop ainsi que l'objet vendu devrait apparaître
+
+6.scalabilité des shop
+
+Modifions la ressource malls.yaml :
+
+```yaml
+apiVersion: mall.my.domain/v1
+kind: Mall
+metadata:
+  name: mall-first
+spec:
+  replicas: 5
+  item: socks
+```
+
+Appliquons la :
+
+```sh
+kubectl apply -f mall.yaml
+```
+
+Verifions le nombre de pods déployés:
+
+``sh
+minikube dashboard
+```
+Le nombre de pods shop devrait déscendre à 5
+
+
+7.Test de suppression de la ressource mall.yaml
+
+```sh
+kubectl delete -f mall.yaml
+```
+
+Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
+
 
 ## Author
 
