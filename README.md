@@ -1,15 +1,23 @@
-<h1 align="center">Welcome to ExoDevops 👋</h1>
+<h1 align="center">ExoDevops</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Projet d'automatisation devops
+> Exercice Devops dont le but est d'écrire un operateur kubernetes minimaliste
+> Objectif de l'operateur :
+>		-> Definir une Custom Ressource Mall qui correspond à un centre commercial qui contient N boutiques et l'item vendu par ce boutiques.
+>		-> L'operateur va dimensionner le nombre de pod qui correspond aux N boutiques et definir l'item vendu basé sur les valeurs de la custom ressource 
 
-## Install
+## Installation 
 
-```sh
-minikube
-```
+>Près requis :
+>	* Docker
+>	* Kubectl
+>	* Minikube
+>	* Framework python kopf	
+
+(https://kubernetes.io/fr/docs/tasks/tools/install-minikube/)
+
 
 ## Usage
 
