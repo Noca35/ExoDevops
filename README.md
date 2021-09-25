@@ -5,7 +5,7 @@
 
 Exercice Devops dont le but est d'écrire un operateur kubernetes minimaliste
 
-> L'objectif de l'opérateur est de definir une Custom Ressource Mall qui correspond à un centre commercial qui contient N boutiques et l'item vendu par ces boutiques
+> L'objectif de l'opérateur est de definir une Custom Ressource Mall qui correspond à un centre commercial qui contient N boutiques et l'item vendu par ces boutiques.
 > Grâce à ces données, l'operateur va dimensionner le nombre de pod qui correspond aux N boutiques et definir l'item vendu basé sur les valeurs de la custom ressource.
 > Les informations sur le nom de la boutique ainsi que l'objet vendu seront affiché chaques secondes dans les différents pod de la boutique. 
 
