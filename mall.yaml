@@ -1,0 +1,7 @@
+apiVersion: mall.my.domain/v1
+kind: Mall
+metadata:
+  name: mall-first
+spec:
+  replicas: 10
+  item: socks

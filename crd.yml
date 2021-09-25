@@ -1,0 +1,27 @@
+# crd.yml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: malls.mall.my.domain        
+spec:
+  group: mall.my.domain    
+  versions:
+    - name: v1                                                      
+      served: true 
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+  scope: Namespaced
+  names:
+     listKind: MallList
+     plural: malls       
+     singular: mall       
+     kind: Mall 
