@@ -105,7 +105,7 @@ kubectl apply -f mall.yaml
 
 Verifions le nombre de pods déployés:
 
-``sh
+```sh
 minikube dashboard
 ```
 Le nombre de pods shop devrait déscendre à 5
