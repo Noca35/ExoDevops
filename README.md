@@ -17,10 +17,15 @@ Exercice Devops dont le but est d'écrire un operateur kubernetes minimaliste
 >	* Minikube
 >	* Framework python kopf	
 
-guide d'installation :
+guide d'installation du cluster :
 
 https://kubernetes.io/fr/docs/tasks/tools/install-minikube/
 
+Installation du framework Kopf :
+
+```sh
+pip install kopf
+```
 
 ## Test du déploiement
 
