@@ -10,11 +10,11 @@
 
 ## Installation de l'environement
 
-Près requis :
-	* Docker
-	* Kubectl
-	* Minikube
-	* Framework python kopf	
+> Près requis :
+>	* Hyperviseur
+>	* Kubectl
+>	* Minikube
+>	* Framework python kopf	
 
 guide d'installation :
 
