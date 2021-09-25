@@ -43,7 +43,7 @@ A ce stade le dashboard kubernetes devrait apparaitre à l'écran
 ```sh
 kubectl apply -f crd.yaml ## definition de la custom ressource
 kubectl apply -f role-operator.yaml ## definition des rôles de l'operateur
-kubectl apply -f rol_bind-operator.yaml ## application des rôles à l'operateur 
+kubectl apply -f role_bind-operator.yaml ## application des rôles à l'operateur 
 ```
 2.Deploiement de l'operateur dans le cluster
 
