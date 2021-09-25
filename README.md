@@ -125,5 +125,3 @@ Avec cette commande on observe que les pods shop on été supprimé ainsi que la
 
 👤 **Noca35**
 
-* Github: [@Noca35](https://github.com/Noca35)
-
