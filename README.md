@@ -5,9 +5,8 @@
 
 Exercice Devops dont le but est d'écrire un operateur kubernetes minimaliste
 
-> Objectif de l'operateur :
->		* Definir une Custom Ressource Mall qui correspond à un centre commercial qui contient N boutiques et l'item vendu par ce boutiques.
->		* L'operateur va dimensionner le nombre de pod qui correspond aux N boutiques et definir l'item vendu basé sur les valeurs de la custom ressource 
+> L'objectif de l'opérateur est deDefinir une Custom Ressource Mall qui correspond à un centre commercial qui contient N boutiques et l'item vendu par ce boutiques,grâce à ces données, l'operateur va dimensionner le nombre de pod qui correspond aux N boutiques et definir l'item vendu basé sur les valeurs de la custom ressource.
+> Les informations sur le nom de la boutique ainsi que l'objet vendu seront affiché chaques secondes dans les différents pod de la boutique. 
 
 ## Installation de l'environnement
 
@@ -52,11 +51,18 @@ kubectl apply -f operator-deployment.yaml
 kubectl apply -f mall.yaml
 ```
 
+4.Confirmation de la création des ressources
 
+A ce stade une configmap "mall-config" a du être créée ainsi que 10 pods shop basé sur la custom ressource :
 
-
-```sh
-test
+```python
+apiVersion: mall.my.domain/v1
+kind: Mall
+metadata:
+  name: mall-first
+spec:
+  replicas: 10
+  item: socks
 ```
 
 ## Author
