@@ -31,7 +31,7 @@ pip install kopf
 
 ```sh
 minikube start
-minikube dashboard
+minikube status
 ```
 
 A ce stade le dashboard kubernetes devrait apparaitre à l'écran
@@ -112,7 +112,7 @@ kubectl apply -f mall.yaml
 Verifions le nombre de pods déployés:
 
 ```sh
-minikube dashboard
+minikube get pods --all-namespaces
 ```
 Le nombre de pods shop devrait déscendre à 5
 
