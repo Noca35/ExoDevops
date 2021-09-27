@@ -5,9 +5,9 @@ metadata:
   labels:
     app: malls-operator
 spec:
-  replicas: 1 # make sure to not have more than one replicas
+  replicas: 1
   strategy:
-    type: Recreate # make sure the old pod is being killed before the new pod is being created
+    type: Recreate
   selector:
     matchLabels:
       app: malls-operator
