@@ -4,4 +4,4 @@ metadata:
   name: mall-first
 spec:
   replicas: 5
-  item: banana
+  item: socks

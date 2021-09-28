@@ -25,15 +25,10 @@ def update_1(spec, **kwargs):
     deployment.replicas = spec.get('replicas', 1)
     deployment.update()
 
-
     doc1 = create_configmap(spec)
     pykube.ConfigMap(api, doc1).update()
 
     api.session.close()
-
-
-
-
 
 def create_deployment(spec):
     return yaml.safe_load(f"""
