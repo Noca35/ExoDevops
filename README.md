@@ -30,28 +30,28 @@ minikube status
 
 ## Usage
 
-1.Dans notre cas l'opérateur va être déployé dans le cluster, on va devoir donc lui attribuer les droits nécéssaire à son bon fonctionnement
+ 1. Dans notre cas l'opérateur va être déployé dans le cluster, on va devoir donc lui attribuer les droits nécéssaire à son bon fonctionnement
 
 ```sh
 kubectl apply -f crd.yaml ## definition de la custom ressource
 kubectl apply -f role-operator.yaml ## definition des rôles de l'operateur
 kubectl apply -f role_bind-operator.yaml ## application des rôles à l'operateur 
 ```
-2.Deploiement de l'operateur dans le cluster
+ 2. Deploiement de l'operateur dans le cluster
 
 ```sh
 kubectl apply -f operator-deployment.yaml
 ```
 
-3.Definition des ressources de la galerie marchande
+ 3. Definition des ressources de la galerie marchande
 
 ```sh
 kubectl apply -f mall.yaml
 ```
 
-4.Confirmation de la création des ressources
+ 4. Confirmation de la création des ressources
 
-A ce stade une configmap "mall-config" a du être créée avec l'item "socks" ainsi que 10 pods shop basé sur la custom ressource mall.yaml :
+    A ce stade une configmap "mall-config" a du être créée avec l'item "socks" ainsi que 10 pods shop basé sur la custom ressource mall.yaml :
 
 ```yaml
 apiVersion: mall.my.domain/v1
@@ -63,28 +63,28 @@ spec:
   item: socks
 ```
 
-replicas correspondant au nombre de boutique dans la gallerie marchande et item l'objet vendu
+ replicas correspondant au nombre de boutique dans la gallerie marchande et item l'objet vendu
 
-5.Affichage du message d'information
+ 5. Affichage du message d'information
 
-Commençons par lister les pods déployés et verifions que la configmap contient la bonne variable 
+    Commençons par lister les pods déployés et verifions que la configmap contient la bonne variable 
 
 ```sh
 kubectl get pods --all-namespaces
 kubectl describe configmaps mall-config
 ```
 
-Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
+    Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
 
 ```sh
 kubectl logs -f my-pod
 ```
 
-Le message retournant le nom du shop ainsi que l'objet vendu devrait apparaître
+    Le message retournant le nom du shop ainsi que l'objet vendu devrait apparaître
 
-6.scalabilité des shop
+ 6. Scalabilité des shop
 
-Modifions la ressource malls.yaml :
+    Modifions la ressource malls.yaml :
 
 ```yaml
 apiVersion: mall.my.domain/v1
@@ -96,36 +96,36 @@ spec:
   item: apple
 ```
 
-Appliquons la :
+    Appliquons la :
 
 ```sh
 kubectl apply -f mall.yaml
 ```
 
-Verifions le nombre de pods déployés ainsi que les données de la configmap ont bien changé dynamiquement:
+    Verifions le nombre de pods déployés ainsi que les données de la configmap ont bien changé dynamiquement:
 
 ```sh
 kubectl get pods --all-namespaces
 kubectl describe configmaps mall-config
 
 ```
-Le nombre de pods shop devraient descendre à 5 et le la variable de la configmap env.item = apple
+    Le nombre de pods shop devraient descendre à 5 et le la variable de la configmap env.item = apple
 
 
-7.Test de suppression de la ressource mall.yaml
+ 7. Test de suppression de la ressource mall.yaml
 
 ```sh
 kubectl delete -f mall.yaml
 ```
 
-Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
+    Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
 
 
 ## Rollout restart des pods quand la configmap est update
 
-J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
+    J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
 
-ressource : https://github.com/stakater/Reloader
+            ressource : https://github.com/stakater/Reloader
 
 
 ## Author
