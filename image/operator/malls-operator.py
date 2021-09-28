@@ -13,8 +13,6 @@ def create_1(spec, **kwargs):
 
     api.session.close()
 
-    return {'children': [deployment.metadata['uid']]}
-
 @kopf.on.update('mall.my.domain', 'v1', 'malls')
 def update_1(spec, **kwargs):
     api = pykube.HTTPClient(pykube.KubeConfig.from_env())
@@ -23,8 +21,6 @@ def update_1(spec, **kwargs):
     deployment.update()
 
     api.session.close()
-
-    return {'children': [deployment.metadata['uid']]}
 
 @kopf.on.create('mall.my.domain', 'v1', 'malls')
 def create_2(spec, **kwargs):
