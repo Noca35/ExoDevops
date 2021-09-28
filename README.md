@@ -102,7 +102,7 @@ Appliquons la :
 kubectl apply -f mall.yaml
 ```
 
-Verifions le nombre de pods déployés ainsi que les données de la configmap on bien changé dynamiquement:
+Verifions le nombre de pods déployés ainsi que les données de la configmap ont bien changé dynamiquement:
 
 ```sh
 kubectl get pods --all-namespaces
