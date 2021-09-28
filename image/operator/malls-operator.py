@@ -33,6 +33,16 @@ def create_2(spec, **kwargs):
 
     api.session.close()
 
+@kopf.on.update('mall.my.domain', 'v1', 'malls')
+def update_2(spec, **kwargs):
+    api = pykube.HTTPClient(pykube.KubeConfig.from_env())
+    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
+    configmap.patch({'data': {'env.item': {spec.get('item')}}})
+
+    api.session.close()
+
+
+
 def create_deployment(spec):
     return yaml.safe_load(f"""
         apiVersion: apps/v1
@@ -67,6 +77,8 @@ def create_configmap(spec):
         metadata:
           name: mall-config
           namespace: default
+          annotations:
+            configmap/update: 'yes'
         data:
          env.item: {spec.get('item')}
     """)

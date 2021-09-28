@@ -3,5 +3,5 @@ kind: Mall
 metadata:
   name: mall-first
 spec:
-  replicas: 10
-  item: socks
+  replicas: 5
+  item: banana
