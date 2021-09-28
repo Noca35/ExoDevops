@@ -121,6 +121,13 @@ kubectl delete -f mall.yaml
 Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
 
 
+## Rollout restart des pods quand la configmap est update
+
+J'ai commencé à creuser le sujet à ce niveau, je n'ais pas trouvé de solutions simple 
+
+ressource a creuser : https://github.com/stakater/Reloader
+
+
 ## Author
 
 👤 **Noca35**
