@@ -73,10 +73,11 @@ replicas correspondant au nombre de boutique dans la gallerie marchande et item 
 
 5.Affichage du message d'information
 
-Commençons par lister les pods déployés
+Commençons par lister les pods déployés et verifions que la configmap contient la bonne variable 
 
 ```sh
 kubectl get pods --all-namespaces
+kubectl describe configmaps mall-config
 ```
 
 Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
@@ -98,7 +99,7 @@ metadata:
   name: mall-first
 spec:
   replicas: 5
-  item: socks
+  item: apple
 ```
 
 Appliquons la :
@@ -107,12 +108,14 @@ Appliquons la :
 kubectl apply -f mall.yaml
 ```
 
-Verifions le nombre de pods déployés:
+Verifions le nombre de pods déployés ainsi que les données de la configmap on bien changé dynamiquement:
 
 ```sh
-minikube get pods --all-namespaces
+kubectl get pods --all-namespaces
+kubectl describe configmaps mall-config
+
 ```
-Le nombre de pods shop devrait déscendre à 5
+Le nombre de pods shop devraient descendre à 5 et le la variable de la configmap env.item = apple
 
 
 7.Test de suppression de la ressource mall.yaml
