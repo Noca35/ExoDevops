@@ -21,12 +21,6 @@ guide d'installation du cluster :
 
 https://kubernetes.io/fr/docs/tasks/tools/install-minikube/
 
-Installation du framework Kopf :
-
-```sh
-pip install kopf
-```
-
 ## Test du déploiement
 
 ```sh
