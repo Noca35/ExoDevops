@@ -29,17 +29,6 @@ def update_1(spec, **kwargs):
     doc1 = create_configmap(spec)
     pykube.ConfigMap(api, doc1).update()
 
-
-#    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
-#    configmap.delete()
-
-#    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
-
-
-#    configmap = pykube.ConfigMap(api, doc1)
-#    configmap.create()
-
-
     api.session.close()
 
 
