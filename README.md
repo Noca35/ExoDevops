@@ -63,7 +63,7 @@ spec:
   item: socks
 ```
 
-    replicas correspondant au nombre de boutique dans la gallerie marchande et item l'objet vendu
+   replicas correspondant au nombre de boutique dans la gallerie marchande et item l'objet vendu
 
  5. Affichage du message d'information
 
@@ -124,6 +124,7 @@ kubectl delete -f mall.yaml
 ## Rollout restart des pods quand la configmap est update
 
   J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
+ 
   ressource : https://github.com/stakater/Reloader
 
 
