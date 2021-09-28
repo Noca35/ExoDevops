@@ -59,7 +59,7 @@ kind: Mall
 metadata:
   name: mall-first
 spec:
-  replicas: 10
+  replicas: 5
   item: socks
 ```
 
@@ -92,7 +92,7 @@ kind: Mall
 metadata:
   name: mall-first
 spec:
-  replicas: 5
+  replicas: 3
   item: apple
 ```
 
