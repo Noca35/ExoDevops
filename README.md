@@ -67,24 +67,24 @@ spec:
 
  5. Affichage du message d'information
 
-    Commençons par lister les pods déployés et verifions que la configmap contient la bonne variable 
+   Commençons par lister les pods déployés et verifions que la configmap contient la bonne variable 
 
 ```sh
 kubectl get pods --all-namespaces
 kubectl describe configmaps mall-config
 ```
 
-    Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
+   Et ensuite affichons les logs d'un pod shop au choix en remplaçant my-pod par un des pods shop listé
 
 ```sh
 kubectl logs -f my-pod
 ```
 
-    Le message retournant le nom du shop ainsi que l'objet vendu devrait apparaître
+   Le message retournant le nom du shop ainsi que l'objet vendu devrait apparaître
 
  6. Scalabilité des shop
 
-    Modifions la ressource malls.yaml :
+   Modifions la ressource malls.yaml :
 
 ```yaml
 apiVersion: mall.my.domain/v1
@@ -96,20 +96,20 @@ spec:
   item: apple
 ```
 
-    Appliquons la :
+   Appliquons la :
 
 ```sh
 kubectl apply -f mall.yaml
 ```
 
-    Verifions le nombre de pods déployés ainsi que les données de la configmap ont bien changé dynamiquement:
+   Verifions le nombre de pods déployés ainsi que les données de la configmap ont bien changé dynamiquement:
 
 ```sh
 kubectl get pods --all-namespaces
 kubectl describe configmaps mall-config
 
 ```
-    Le nombre de pods shop devraient descendre à 5 et le la variable de la configmap env.item = apple
+   Le nombre de pods shop devraient descendre à 5 et le la variable de la configmap env.item = apple
 
 
  7. Test de suppression de la ressource mall.yaml
@@ -118,13 +118,13 @@ kubectl describe configmaps mall-config
 kubectl delete -f mall.yaml
 ```
 
-    Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
+   Avec cette commande on observe que les pods shop on été supprimé ainsi que la configmap "mall-config"
 
 
 ## Rollout restart des pods quand la configmap est update
 
-    J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
-    ressource : https://github.com/stakater/Reloader
+  J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
+  ressource : https://github.com/stakater/Reloader
 
 
 ## Author
