@@ -5,11 +5,16 @@ import yaml
 @kopf.on.create('mall.my.domain', 'v1', 'malls')
 def create_1(spec, **kwargs):
     doc = create_deployment(spec)
+    doc1 = create_configmap(spec)
     kopf.adopt(doc)
+    kopf.adopt(doc1)
 
     api = pykube.HTTPClient(pykube.KubeConfig.from_env())
     deployment = pykube.Deployment(api, doc)
     deployment.create()
+
+    configmap = pykube.ConfigMap(api, doc1)
+    configmap.create()
 
     api.session.close()
 
@@ -20,26 +25,24 @@ def update_1(spec, **kwargs):
     deployment.replicas = spec.get('replicas', 1)
     deployment.update()
 
-    api.session.close()
 
-@kopf.on.create('mall.my.domain', 'v1', 'malls')
-def create_2(spec, **kwargs):
     doc1 = create_configmap(spec)
-    kopf.adopt(doc1)
+    pykube.ConfigMap(api, doc1).update()
 
-    api = pykube.HTTPClient(pykube.KubeConfig.from_env())
-    configmap = pykube.ConfigMap(api, doc1)
-    configmap.create()
+
+#    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
+#    configmap.delete()
+
+#    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
+
+
+#    configmap = pykube.ConfigMap(api, doc1)
+#    configmap.create()
+
 
     api.session.close()
 
-@kopf.on.update('mall.my.domain', 'v1', 'malls')
-def update_2(spec, **kwargs):
-    api = pykube.HTTPClient(pykube.KubeConfig.from_env())
-    configmap = pykube.ConfigMap.objects(api).get(name="mall-config")
-    configmap.patch({'data': {'env.item': {spec.get('item')}}})
 
-    api.session.close()
 
 
 
