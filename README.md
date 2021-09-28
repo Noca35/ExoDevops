@@ -123,7 +123,7 @@ kubectl delete -f mall.yaml
 
 ## Rollout restart des pods quand la configmap est update
 
-  J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé une solution simple 
+  J'ai commencé à creuser le sujet à ce niveau, je n'ai pas trouvé de solution simple 
  
   ressource : https://github.com/stakater/Reloader
 
