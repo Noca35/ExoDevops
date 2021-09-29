@@ -33,7 +33,6 @@ minikube status
  1. Dans notre cas l'opérateur va être déployé dans le cluster, on va devoir donc lui attribuer les droits nécéssaire à son bon fonctionnement
 
 ```sh
-kubectl apply -f crd.yaml ## definition de la custom ressource
 kubectl apply -f role-operator.yaml ## definition des rôles de l'operateur
 kubectl apply -f role_bind-operator.yaml ## application des rôles à l'operateur 
 ```
@@ -43,9 +42,10 @@ kubectl apply -f role_bind-operator.yaml ## application des rôles à l'operateu
 kubectl apply -f operator-deployment.yaml
 ```
 
- 3. Definition des ressources de la galerie marchande
+ 3. Definition de la custom ressources ainsi que les valeurs de la galerie marchande
 
 ```sh
+kubectl apply -f crd.yaml ## definition de la custom ressource
 kubectl apply -f mall.yaml
 ```
 
